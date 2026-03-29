@@ -36,22 +36,28 @@ Cada inimigo derrotado representa um pequeno avanço na batalha pela sobrevivên
 ## 2.2 Arquitetura do Código
 ```
 blitzstar/
----|Sprites/
-------|Imagens
-------|exp/
----------|Explosões
 ---|Sounds/
 ------|Trilhas sonoras e sons
----| Explosion.py
----| Inimigos.py
----| Tiros.py
+---|Sprites/
+------|Imagens
+------|Lasers/
+---------|Lasers
+------|easter/
+---------|Easter
+------|exp/
+---------|Explosões
+---| arduino_controle.ino
+---| boss.py
 ---| config.py
 ---| const.py
 ---| entrada.py
+---| Explosion.py
+---| Inimigos.py
 ---| jogo.py
 ---| nave.py
 ---| power.py
 ---| stat_game.py
 ---| tela.py
+---| Tiros.py
 
 ```
