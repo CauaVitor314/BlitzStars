@@ -147,11 +147,14 @@ while True:
             for disparo in nave_jogada.tiros[:]:
                 if disparo.rect.colliderect(boss.rect):
                     boss.vida -= nave_jogada.dano
-                    nave_jogada.tiros.remove(disparo)
+                    if disparo in nave_jogada.tiros:
+                        nave_jogada.tiros.remove(disparo)
+
                     if boss.vida <= 0:
                         boss = None
                         Boss_Show *= 2
                         estado_jogo.valor = "jogando"
+                        break
 
         # Inimigos normais só se não houver boss
         if boss is None:
@@ -189,7 +192,8 @@ while True:
                         if alien.saude <= 0:
                             nave_jogada.points += alien.points
                             alien.morreu(explosions, power_list)
-                            malvados.aliens.remove(alien)
+                            if alien in malvados.aliens: 
+                                malvados.aliens.remove(alien)
                         if disparo in nave_jogada.tiros:
                             nave_jogada.tiros.remove(disparo)
                         break
@@ -202,9 +206,9 @@ while True:
 
         # Game over
         if nave_jogada.vida <= 0:
-            telas.randomize_gameover()
-            estado_jogo.valor = "Gameover"
-            continue
+            boss = None 
+            Boss_Show = 2000 
+            tiros_dos_aliens.clear()
 
         # Nave e HUD
         nave_jogada.Desenhar_nave(tela)
